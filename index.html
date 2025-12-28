@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Analítica en Power BI – Tiempos de Entrega</title>
+
+<style>
+:root{
+  --bg:#003057;
+  --card:#0a4f82;
+  --glow:#00d2e2;
+  --danger:#d64123;
+  --text:#e5e1e6;
+  --muted:#bfc9d1;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter, system-ui, Arial;
+  background:
+    radial-gradient(circle at 20% 10%, #007cc1 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, #00a3af 0%, transparent 45%),
+    linear-gradient(180deg,#003057,#001f35);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+.container{
+  max-width:1500px;
+  margin:auto;
+  padding:90px 48px 110px;
+}
+
+/* ===== HERO TITLE ===== */
+.hero{
+  text-align:center;
+  margin-bottom:90px;
+  position:relative;
+}
+
+.hero h1{
+  font-size:48px;
+  margin:0;
+  color:white;
+  letter-spacing:1.2px;
+  position:relative;
+  text-shadow:
+    0 0 25px rgba(0,210,226,.35),
+    0 0 80px rgba(0,210,226,.18);
+}
+
+.hero h1::after{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(0,210,226,.85),
+    transparent 65%
+  );
+  background-size:200% 100%;
+  animation:sweep 6s infinite linear;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+@keyframes sweep{
+  from{background-position:-200% 0}
+  to{background-position:200% 0}
+}
+
+.hero p{
+  margin-top:18px;
+  font-size:18px;
+  color:var(--muted);
+}
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:42px;
+}
+
+/* ===== CARDS ===== */
+.card{
+  position:relative;
+  background:rgba(10,79,130,.55);
+  backdrop-filter:blur(20px);
+  border-radius:30px;
+  padding:42px 38px 44px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.08),
+    0 50px 140px rgba(0,0,0,.55);
+  transition:transform .7s ease, box-shadow .7s ease;
+}
+
+.card:hover{
+  transform:translateY(-20px) scale(1.025);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.14),
+    0 80px 200px rgba(0,0,0,.75);
+}
+
+.icon{
+  width:76px;
+  height:76px;
+  margin-bottom:26px;
+  stroke:var(--glow);
+  stroke-width:1.4;
+}
+
+h3{
+  margin:0 0 18px;
+  font-size:26px;
+  color:var(--glow);
+}
+
+.analytics{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(0,210,226,.16);
+  color:var(--glow);
+  font-size:13.5px;
+  font-weight:700;
+}
+
+.desc{
+  font-size:15px;
+  line-height:1.75;
+  margin-bottom:18px;
+}
+
+.list{
+  font-size:14px;
+  line-height:1.7;
+  margin-bottom:22px;
+}
+
+.list strong{color:white}
+
+.time{
+  font-size:17px;
+  font-weight:800;
+  color:var(--danger);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:110px;
+  text-align:center;
+  font-size:13.5px;
+  color:var(--muted);
+  max-width:900px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header class="hero">
+  <h1 data-text="Analítica en Power BI">Analítica en Power BI</h1>
+  <p>Visualización, análisis de tendencias y complejidad técnica por tipo de fuente</p>
+</header>
+
+<section class="grid">
+
+<!-- EXCEL -->
+<div class="card">
+<svg class="icon" viewBox="0 0 24 24" fill="none">
+  <rect x="3" y="3" width="18" height="18" rx="3"/>
+  <path d="M8 7h8M8 12h8M8 17h8"/>
+</svg>
+<h3>Excel</h3>
+<div class="analytics">Analítica descriptiva → Tendencias</div>
+<div class="desc">
+Evolución de archivos operativos hacia modelos analíticos con KPIs,
+comparativos temporales y detección de patrones básicos.
+</div>
+<div class="list">
+<strong>Ventajas:</strong> implementación rápida, flexibilidad, bajo costo<br>
+<strong>Limitaciones:</strong> escalabilidad limitada, control manual
+</div>
+<div class="time">2–3 días → 3–4 días</div>
+</div>
+
+<!-- SQL -->
+<div class="card">
+<svg class="icon" viewBox="0 0 24 24" fill="none">
+  <ellipse cx="12" cy="5" rx="8" ry="3"/>
+  <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/>
+</svg>
+<h3>Base de Datos (SQL)</h3>
+<div class="analytics">Tendencias estructuradas</div>
+<div class="desc">
+Análisis histórico confiable con métricas normalizadas,
+crecimiento, desaceleración y lectura ejecutiva consistente.
+</div>
+<div class="list">
+<strong>Ventajas:</strong> consistencia, trazabilidad, escalabilidad<br>
+<strong>Limitaciones:</strong> dependencia del modelo existente
+</div>
+<div class="time">3–4 días → 5–6 días</div>
+</div>
+
+<!-- API -->
+<div class="card">
+<svg class="icon" viewBox="0 0 24 24" fill="none">
+  <path d="M8 7l-4 5 4 5M16 7l4 5-4 5"/>
+</svg>
+<h3>API</h3>
+<div class="analytics">Diagnóstico + Tendencias</div>
+<div class="desc">
+Integración de datos externos con análisis de comportamiento,
+volatilidad y patrones dinámicos.
+</div>
+<div class="list">
+<strong>Ventajas:</strong> automatización, datos actualizados<br>
+<strong>Limitaciones:</strong> límites técnicos del proveedor
+</div>
+<div class="time">3–5 días → 5–7 días</div>
+</div>
+
+<!-- MIXTAS -->
+<div class="card">
+<svg class="icon" viewBox="0 0 24 24" fill="none">
+  <circle cx="6" cy="12" r="3"/>
+  <circle cx="18" cy="12" r="3"/>
+  <path d="M9 12h6"/>
+</svg>
+<h3>Fuentes Mixtas</h3>
+<div class="analytics">Correlaciones y patrones</div>
+<div class="desc">
+Lectura cruzada avanzada para descubrir relaciones
+entre múltiples orígenes de datos.
+</div>
+<div class="list">
+<strong>Ventajas:</strong> visión 360°, insights profundos<br>
+<strong>Limitaciones:</strong> complejidad técnica elevada
+</div>
+<div class="time">5–6 días → 7–9 días</div>
+</div>
+
+<!-- REAL TIME -->
+<div class="card">
+<svg class="icon" viewBox="0 0 24 24" fill="none">
+  <circle cx="12" cy="12" r="9"/>
+  <path d="M12 7v6l4 2"/>
+</svg>
+<h3>Tiempo Casi Real</h3>
+<div class="analytics">Desviaciones y alertas</div>
+<div class="desc">
+Monitoreo operativo continuo con detección inmediata
+de desviaciones y control del desempeño.
+</div>
+<div class="list">
+<strong>Ventajas:</strong> reacción inmediata, control operativo<br>
+<strong>Limitaciones:</strong> mayor costo y complejidad técnica
+</div>
+<div class="time">7–10 días → 10–14 días</div>
+</div>
+
+<!-- PYTHON -->
+<div class="card">
+<svg class="icon" viewBox="0 0 24 24" fill="none">
+  <path d="M4 6h16M4 12h16M4 18h16"/>
+</svg>
+<h3>Python ETL + BI</h3>
+<div class="analytics">Tendencias → Predictiva</div>
+<div class="desc">
+Arquitectura avanzada para escenarios,
+proyecciones y analítica de mayor profundidad.
+</div>
+<div class="list">
+<strong>Ventajas:</strong> automatización total, robustez<br>
+<strong>Limitaciones:</strong> inversión inicial y diseño avanzado
+</div>
+<div class="time">5–15 días → 8–20 días</div>
+</div>
+
+</section>
+
+<footer>
+Las estimaciones consideran la complejidad técnica, el nivel analítico requerido
+(descriptivo, diagnóstico, tendencias o predictivo), la calidad de los datos
+y los procesos de validación necesarios para garantizar resultados confiables
+y alineados a estándares corporativos.
+</footer>
+
+</div>
+</body>
+</html>
